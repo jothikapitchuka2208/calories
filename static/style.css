@@ -1,0 +1,60 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+body{
+	background-image: url("https://media.istockphoto.com/id/1194766921/photo/rainbow-fruits-background.jpg?s=170667a&w=0&k=20&c=AH1KTEeUh0zpXIp9cM3vX8y9rXqdjvakTlk3J9vejU0=");
+	background-size: cover;
+	height: 100vh;
+}
+
+.login-form{
+	width: 300px;
+	top: 50%;
+	left: 30%;
+	transform: translate(-50%,-50%);
+	position: absolute;
+	color: #fff;
+	color: black;
+}
+.login-form h1{
+	font-size: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 40px 0;
+}
+.login-form p{
+	font-size: 20px;
+	margin: 15px 0;
+	font-weight: bold;
+
+}
+.login-form input{
+	font-size: 16px;
+	width: 80%;
+	padding: 10px;
+	border: 3;
+	outline: none;
+	border-radius: 5px;
+	border-width: 0;
+}
+.login-form button{
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0;
+	padding: 10px 15px;
+	width: 40%;
+	border-radius: 5px;
+	border: 0;
+	background-color:skyblue;
+	color: white;
+
+}
+.but:hover{
+	background-color: white;
+}
+.but:hover{
+	color:skyblue;
+}

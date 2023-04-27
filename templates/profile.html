@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfileDetails</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing:border-box;
+        }
+        nav{
+            width: 100%;
+            background-color:lightseagreen;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 15px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            padding-left: 22%;
+            letter-spacing: 2px;
+        }
+        nav ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul li{
+            list-style: none;
+            padding: 0px 5px;
+        }
+        nav ul li a{
+            color:black;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bolder;
+        }
+        #go{
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            border: 0px;
+        }
+        #go:hover{
+            color: white;
+            background-color: black;
+        }
+        .firstcontainer{
+            background-image:url("https://img.freepik.com/premium-photo/flat-lay-with-red-cherry-tomatoes-green-spinach-leaves-white-wooden-background-healthy-eating-concept_371428-1240.jpg");
+            height:200vh;
+            background-size: cover;
+        }
+    
+        .halfcont{
+            background-color: lightpink;
+        }
+        .sub:hover{
+            background-color: white;
+        }
+    </style>
+    <nav>
+        <ul>
+            <li><a href="{{url_for('homepage',id1=id1)}}" id="go">Profile</a></li>
+            <li><a href="{{url_for('addfood')}}" id="go">Add Food items</a></li>
+            <li><a href="{{url_for('addwork')}}" id="go">Add WorkOut Session</a></li>
+            <li><a href="{{url_for('logout')}}" id="go">Logout</a></li>
+
+        </ul>
+    </nav>
+    {% if target==0 %}
+    <div class="halfcont">
+    <div style="padding-top: 20px;">
+         <center>
+        <form method="POST">
+         <h2 style="padding-bottom:10px;">Set Target:</h2>
+         <input id="numid" type="number" name="target" required/>
+        </br>
+        </br>
+        
+        
+        <button type="submit" class="sub" style="padding-top:5px;padding-bottom:5px;width: 100px;color:white;background-color: green;font-size: large;font-family: Arial, Helvetica, sans-serif;">Submit</button>
+        </form>
+        </center>
+    </div>
+    {% else %}
+    <div class="firstcontainer">
+   <div style="padding-top: 20px;">
+    <center>
+    <h2 style="padding-bottom:5px;">Consumed:</h2>
+	<input id="numid" type="number" value="{{consumed}}" readonly/>
+    </br>
+    </br>
+    <h2 style="padding-bottom:5px;">Target:</h2>
+    <input id="numid" type="number" value="{{target}}" readonly/>
+    </center>
+   </div>
+   {% endif %}
+    
+   <div>
+    <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 30px; padding-bottom: 10px;"><center>All Food Items Consumed Today(Calories Tracker Report)</center></h3>
+     <center><table border="1px" style="width: 97%; text-align: center; font-size: 20px;" >
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Carbohydrates</th>
+            <th>Fats</th>
+            <th>Protein</th>
+            <th>Fiber</th>
+            <th>Calories</th>
+        </tr>
+        {% for i in day_report %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+     <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 40px; padding-bottom: 10px;"><center>Overall Nutrition Details(Last 7 Days)</center></h3>
+     <center><table border="1px" style="width: 97%; text-align: center; font-size: 20px;" >
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Carbohydrates</th>
+            <th>Fats</th>
+            <th>Protein</th>
+            <th>Fiber</th>
+            <th>Calories</th>
+        </tr>
+        {% for i in sevendays_report %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+    </br>
+    </br>
+    </br>
+
+    
+
+
+
+    {% if worktarget==0 %}
+    <div style="padding-top: 20px;">
+        <center>
+       <form method="POST">
+        <h2 style="padding-bottom:10px;">Set Target:</h2>
+        <input id="numid" type="number" name="worktarget" required/>
+       </br>
+       </br>
+       <button type="submit" class="sub" style="padding-top:5px;padding-bottom:5px;width: 100px;color:white;background-color: green;font-size: large;font-family: Arial, Helvetica, sans-serif;">Submit</button>
+       </form>
+       </center>
+   </div>
+    {% else %}
+     
+     <div style="padding-top: 50px;">
+        <center>
+        <h2 style="padding-bottom:5px;">Calories Burned:</h2>
+
+        <input id="numid" type="number" value="{{workconsumed}}" readonly/>
+        </br>
+        </br>
+        <h2 style="padding-bottom:5px;">Target:</h2>
+        <input id="numid" type="number" value="{{worktarget}}" readonly/>
+        </center>
+    </div>
+    {% endif %}
+        
+       <div>
+        <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 30px; padding-bottom: 10px;"><center>All WorkOut Sessions Today(Calories Tracker Report)</center></h3>
+         <center><table border="1px" style="width: 97%; text-align: center; font-size: 20px;" >
+            <tr>
+                <th>workout</th>
+                <th>time</th>
+                <th>callories</th>
+            </tr>
+            {% for i in day_report_w %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+            </tr>
+            {% endfor %}
+         </table>
+         <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 40px; padding-bottom: 10px;"><center>Overall WorkOut Details(Last 7 Days)</center></h3>
+         <center><table border="1px" style="width: 97%; text-align: center; font-size: 20px;" >
+            <tr>
+                <th>workout</th>
+                <th>time</th>
+                <th>callories</th>
+            </tr>
+            {% for i in sevendays_report_w %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+            </tr>
+            {% endfor %}
+         </table>
+        </br>
+        </br>
+        </br>
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+body{
+	background-image: url("https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300260/54088765-healthy-food-background-studio-photo-of-different-fruits-on-white-wooden-table-high-resolution.jpg");
+    height: 50vh;
+	background-size:cover;
+	color: #fff;
+}
+.registration-form {
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	transform: translate(-50%,-50%);
+	width: 250px;
+	color: black;
+}
+.registration-form h1{
+	font-size: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 40px 0;
+}
+.registration-form p{
+	font-size: 20px;
+	margin: 15px 0;
+	
+}
+.registration-form input{
+	font-size: 18px;
+	padding:  2px;
+	width: 90%;
+	border-radius: 5px;
+	border-width: 0;
+	outline: none;
+}
+.registration-form button{
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0;
+	padding: 10px 15px;
+	width: 40%;
+	border: 0;
+	border-radius: 5px;
+	background-color:green;
+	color: rgb(247, 244, 244); 
+}
+
+
+
+
+
+
+
+
+
+

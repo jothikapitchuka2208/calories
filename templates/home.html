@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .heading{
+            font-size: 90px;
+            font-family: 'Times New Roman', Times, serif;
+            font-style: oblique;
+        }
+        body {
+            background-image: url('https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300040/52915730-healthy-fruits-background-studio-photo-of-different-fruits-on-wooden-table.jpg');
+            background-size: cover;
+            height: 50vh;
+        
+        
+         
+
+        }
+        .btnstyle {
+            background-color:cornflowerblue;
+            color:white;
+            padding:20px;
+            border-radius: 50px;
+            border:none;
+            font-size: 25px;
+            margin: 10px;
+            cursor: pointer;
+            width:200px;
+        }  
+        .calorie {
+            margin-top:23%; 
+        }
+    
+    </style>
+</head>
+<body>
+  
+    <div class="calorie">
+  <center>
+    <h1 class="heading">Calorie Counter</h1>
+ </center>
+    
+    <div style="text-align:center;">
+    <a href="{{url_for('register')}}"><button class="btnstyle">Register</button></a>
+    <a href="{{url_for('login')}}"><button class="btnstyle">Login</button></a>
+   
+    </div>
+   
+  </div>  
+</body>
+</html>

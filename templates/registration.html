@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration Page</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style1.css')}}">
+	<script type="text/javascript">
+		function validate(){
+			var firstname=document.getElementById("firstname").value;
+			var email=document.getElementById("email").value
+			var mobile=document.getElementById("mobile").value
+	
+			//console.log(male.checked,female.checked)
+			var password=document.getElementById("password").value
+			var firstNameCheck=/^[a-zA-Z ]+$/
+			var emailCheck=/^[a-zA-z0-9.#]+@[a-z]+\.[a-z]{2,3}$/
+							//revathi.bl13@gmail.com
+			var mobileCheck=/^[6-9]\d{9}$/
+			//var mobileCheck=/^(\d{3})[]?(\d{3})[]?(\d{4})$/
+			var passwordCheck=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@#$%&*-+]).{8}$/
+
+			if(firstname==""||firstname.length<3){
+				alert("Please enter your name")
+				return false;
+			}
+			if(!firstname.match(firstNameCheck)){
+				alert("Name Must Carry only characters")
+				return false
+			}
+			if(email==""){
+				alert("Enter your mail")
+				return false
+			}
+			if(!email.match(emailCheck)){
+				alert(" Please check your mail")
+				return false
+			}
+			if(mobile==""){
+				alert("Enter mobile number")
+				return false
+			}
+			if(!mobile.match(mobileCheck)){
+				alert("Provide proper mobile number")
+				return false
+			}
+			if(password==""){
+				alert("Enter password")
+				return false
+			}
+			return true
+		}
+	</script>
+	
+</head>
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	  <ul class=flashes>
+	  {% for message in messages %}
+		<center><h3 style="color:black;padding-top: 5px;"><b>{{message}}</b></h3></center>
+	  {% endfor %}
+	  </ul>
+	{% endif %}
+{% endwith %}
+<body>
+	<div class="registration-form">
+	<h1 style="padding-top:70px;padding-right: 20%;">Registration</h1>
+	<form onsubmit="return validate()" method="POST">
+		<p>User ID</p>
+		<input type="text" id='id' placeholder="Enter your user id" name="id"/>
+		<p>Full Name</p>
+		<input id="firstname" type='text' placeholder="Enter your name" name="name"/>
+		<p>Email ID</p>
+		<input id="email" type='email' placeholder="Enter Your email id" name="email"/>
+		<p>Mobile Number</p>
+		<input id="mobile" type='number' placeholder="Enter Mobile Number" name="number"/>
+		<p>Password</p>
+		<input type="password" id="password" placeholder="Enter Password" name="password"/>
+		<p>Already have an account? <a href="{{url_for('login')}}">Login</a></p>
+		<center><button style="color: white; background-color: skyblue;" type="submit">Sign Up</button></center>
+	</form>
+	</div>
+</body>
+</html>
